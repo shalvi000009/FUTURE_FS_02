@@ -5,16 +5,11 @@ import ProductItem from './ProductItem'
 
 const LatestCollection = () => {
 
-  const context = useContext(ShopContext);
-  const products = context?.products || [];
+  const {products} = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([])
 
   useEffect(() => {
-    if (Array.isArray(products) && products.length > 0) {
       setLatestProducts(products.slice(0, 10));
-    } else {
-      setLatestProducts([]);
-    }
   }, [products])
 
   return (

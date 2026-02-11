@@ -14,7 +14,14 @@ const NAV_LINKS = [
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch , getCartCount} = useContext(ShopContext);
+  const { setShowSearch , getCartCount , navigate , token , setToken , setCartItems} = useContext(ShopContext);
+
+  const logout = () => {
+    navigate ('/login')
+    localStorage.removeItem('token')
+    setToken('')
+    setCartItems({})
+  }
 
   const fallbackImage =
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E";
@@ -58,23 +65,22 @@ const Navbar = () => {
 
         {/* Profile */}
         <div className="group relative">
-          <Link to="/login">
-            <img
+         
+            <img onClick={()=> token ? null : navigate('/login')}
               src={safeAssets.profile_icon || fallbackImage}
               className="w-5 cursor-pointer"
               alt="profile"
             />
-          </Link>
-
+        {/* Dropdown menu */}
+          {token &&
           <div className="hidden group-hover:block absolute right-0 pt-4">
             <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-600 rounded">
               <p className="cursor-pointer hover:text-black">My Profile</p>
-              <p className="cursor-pointer hover:text-black">Orders</p>
-              <p className="cursor-pointer hover:text-black">Logout</p>
+              <p onClick={()=> navigate('/orders')} className="cursor-pointer hover:text-black">Orders</p>
+              <p onClick={logout} className="cursor-pointer hover:text-black">Logout</p>
             </div>
-          </div>
+          </div>}
         </div>
-
 
         {/* Cart */}
         <Link to="/cart" className="relative">

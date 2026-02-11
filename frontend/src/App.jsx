@@ -12,6 +12,7 @@ import Cart from './pages/cart'
 import Login from './pages/login'
 import PlaceOrder from './pages/PlaceOrder'
 import Orders from './pages/Orders'
+import TrackOrder from './pages/TrackOrder'
 import SearchBar from './components/SearchBar'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,6 +56,8 @@ const App = () => {
         <Route path='/login' element={<SafeRoute element={Login} />} />
         <Route path='/place-order' element={<SafeRoute element={PlaceOrder} />} />
         <Route path='/orders' element={<SafeRoute element={Orders} />} />
+        <Route path='/track-order/:orderId' element={<SafeRoute element={TrackOrder} />} />
+    
       </Routes>
       <ErrorBoundary>
         <Footer />

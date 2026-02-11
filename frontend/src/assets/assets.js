@@ -37,8 +37,6 @@ export const assets = {
     menu_icon: images.menu_icon || fallbackImage,
     about_img: images.about_img || fallbackImage,
     contact_img: images.contact_img || fallbackImage,
-    razorpay_logo: images.razorpay_logo || fallbackImage,
-    stripe_logo: images.stripe_logo || fallbackImage,
     cross_icon: images.cross_icon || fallbackImage
 }
 

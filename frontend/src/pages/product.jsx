@@ -16,7 +16,11 @@ const Product = () => {
     const product = products.find((item) => String(item._id) === productId);
     if (product) {
       setProductData(product);
-      setImage(product.image[0]);
+      if (Array.isArray(product.image) && product.image.length > 0) {
+        setImage(product.image[0]);
+      } else {
+        setImage("");
+      }
     }
   };
 

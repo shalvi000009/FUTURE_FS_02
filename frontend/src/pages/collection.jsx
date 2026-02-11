@@ -81,7 +81,7 @@ const Collection = () => {
     }
 
     setFilterProducts(filtered);
-  }, [Category, subCategory, search, showSearch, sortType]);
+  }, [Category, subCategory, search, showSearch, sortType, products]);
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 pt-10 border-t">
@@ -153,7 +153,7 @@ const Collection = () => {
                 className="border rounded-lg overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1"
               >
                 <img
-                  src={item.image?.[0]}
+                  src={Array.isArray(item.image) && item.image.length > 0 ? item.image[0] : ""}
                   alt={item.name}
                   className="w-full h-48 object-cover hover:scale-110 transition-transform duration-300"
                 />
